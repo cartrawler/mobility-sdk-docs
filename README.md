@@ -61,7 +61,7 @@ dependencies {
 import com.cartrawler.mobilitysdk.MobilitySDKManager;
 
 // in the init method of your app, like the onCreate of the root activity. `this` should be an Android Activity.
-MobilitySDKManager.init(this, "");
+MobilitySDKManager.init(this, "<partner-id>");
 
 // To render the Mobility App view (for example on a button press). `this` should be an Android Activity.
 MobilitySDKManager.showActivity(this);
