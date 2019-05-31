@@ -35,8 +35,8 @@ android {
 
 ```java
 dependencies {
-    compile 'com.cartrawler:mobility-app:<version>'
-    compile 'com.facebook.react:react-native:0.59.8'
+    compile 'com.cartrawler:mobility-app:+'
+    compile 'com.facebook.react:react-native:+'
     compile 'com.github.ybq:Android-SpinKit:1.1.0'
 }
 ```
