@@ -11,8 +11,8 @@ allprojects {
         maven {
             url "http://artifactory.cartrawler.com/artifactory/neo-external"
             credentials {
-                username = "<supplied by CarTrawler>"
-                password = "<supplied by CarTrawler>"
+                username = "<artifactory-user>"
+                password = "<artifactory-password>"
             }
         }
     }
