@@ -28,24 +28,16 @@ Please note that you may need to install `git-lfs`. On Mac, install this with `b
 }
 ```
 
-4. Declare a window property to reference on the View Controller which will handle the Mobility App.
+4. To display the Mobility App view, send the `getMobilitySdkVeiw:initialProperties` message to the instance of MobilitySdkManager.
 
 ```objectivec
-@property (nonatomic, strong) UIWindow *window;
-```
-
-To display the Mobility App view, add the following lines.
-
-```objectivec
-    UIView *rootView = [[MobilitySDKManager sharedManager] getMobilitySdkView];
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    UIViewController *rootViewController = [[UIViewController alloc] init];
-    rootViewController.view = rootView;
-    self.window.rootViewController = rootViewController;
-    [self.window makeKeyAndVisible];
+    MobilityViewController * vc = [[MobilitySDKManager sharedManager] getMobilitySdkView:nil];
+    [self presentViewController:(ViewController *)vc animated:YES completion:nil];
 ```
 
 ## Mobility Events
+
+**NOTE: Events are a no-op up to version 0.0.12, they will become active in a later version**
 
 The Mobility SDK has exposed some methods for sending events to the Mobility App. These can be used to update the user profile within the Mobility App.
 
@@ -55,7 +47,7 @@ Import the Mobility SDK to access the MobilityEvents object.
 #import <MobilitySDK/MobilitySDK.h>
 ```
 
-After instantiating the Mobility Events object, call the public methods to send events to the Mobility App.
+After instantiating the `MobilityEvents` object, call the public methods to send events to the Mobility App.
 
 ```objectivec
     MobilityEvents *mobilityEvents = [MobilityEvents allocWithZone:nil];
