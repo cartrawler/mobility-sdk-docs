@@ -35,9 +35,28 @@ Please note that you may need to install `git-lfs`. On Mac, install this with `b
     [self presentViewController:(ViewController *)vc animated:YES completion:nil];
 ```
 
+5. To enable the oepning and closing of Mobility App, the delegate protocol `MobilityDelegate` should be applied to the class which presents `MobilityViewController`. Then implement the method `-(void)closeMobilityApp`, and dismiss `MobilityViewController` in the implementation. For example:
+
+```objectivec
+@interface ViewController: UIViewController<MobilityDelegate>
+
+@end
+
+@implementation ViewController
+
+- (void)closeMobilityApp {
+    [self dismissViewControllerAnimated:NO completion:nil];
+};
+
+- (void)openMobilityApp {
+    MobilityViewController *vc = [[MobilitySDKManager sharedManager] getMobilitySdkView:nil];
+    [self presentViewController:(ViewController *)vc animated:YES completion:nil];
+};
+```
+
 ## Mobility Events
 
-**NOTE: Events are a no-op up to version 0.0.12, they will become active in a later version**
+**NOTE: Events are a no-op up to version 0.0.13, they will become active in a later version**
 
 The Mobility SDK has exposed some methods for sending events to the Mobility App. These can be used to update the user profile within the Mobility App.
 
