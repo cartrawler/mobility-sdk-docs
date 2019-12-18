@@ -25,7 +25,7 @@ allprojects {
 android {
     compileSdkVersion 28
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 26
     }
 }
@@ -35,20 +35,18 @@ android {
 
 ```java
 dependencies {
-    compile 'com.cartrawler:mobility-app:+'
-    compile 'com.facebook.react:react-native:+'
-    compile 'com.github.ybq:Android-SpinKit:1.2.0'
+    implementation('com.cartrawler:mobility-app:+@aar') {
+        transitive = true
+        // if app is using androidx include the following line.
+        exclude group: 'androidx.core', module: '*'
+    }
 }
 ```
 
-4. Add an Activity tag to the app's `AndroidManifest.xml`, and add permission tags:
+4. Add an Activity tag to the app's `AndroidManifest.xml`:
 
 ```xml
 <manifest ...>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <activity android:name="com.cartrawler.mobilitysdk.MobilitySDKActivity"/>
 </manifest>
 ```
