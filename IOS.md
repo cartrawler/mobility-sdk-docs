@@ -1,8 +1,8 @@
 ## IOS Integration
 
-MobilitySDK has been implemented as iOS dynamic Framework that is installed using CocoaPods.
+MobilitySDK has been implemented as an iOS dynamic Framework that is installed using CocoaPods.
 
-1.  Add the following line to your `Podfile` and run `pod install`:
+1.  Add the following line to your `Podfile` and run `pod install` or `pod update`:
 
 ```
 pod 'MobilitySDK', :git => 'https://github.com/cartrawler/mobility-sdk-pods'
@@ -17,13 +17,13 @@ Please note that you may need to install `git-lfs`. On Mac, install this with `b
     <string>This app needs access to your location to provide ride hailing services.</string>
 ```
 
-3. `MobilitySDKManager` should be initialised in your application delegate's init method or similar. This is required to send messages to the Mobility App such as Profile Updates.
+3. `MobilitySDKManager` should be initialised in your application delegate's init method or similar. This is required to send messages to the Mobility App such as profile updates.
 
 ```objectivec
 #import <MobilitySDK/MobilitySDK.h>
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[MobilitySDKManager sharedManager] initWithOptions:launchOptions partnerId:@"<partner-id>"];
+    [[MobilitySDKManager sharedManager] initWithOptions:nil partnerId:@"<partner-id>"];
     ...
 }
 ```
@@ -33,11 +33,15 @@ Please note that you may need to install `git-lfs`. On Mac, install this with `b
 ```objectivec
 #import <MobilitySDK/MobilitySDK.h>
 
+// inside class implementation:
+
+-(void)buttonPress:(id)sender {
     MobilityViewController * vc = [[MobilitySDKManager sharedManager] getMobilitySdkView:nil];
     [self presentViewController:(ViewController *)vc animated:YES completion:nil];
+}
 ```
 
-5. To enable the oepning and closing of Mobility App, the delegate protocol `MobilityDelegate` should be applied to the class which presents `MobilityViewController`. Then implement the method `-(void)closeMobilityApp`, and dismiss `MobilityViewController` in the implementation. For example:
+5. To enable the opening and closing of Mobility App, the delegate protocol `MobilityDelegate` should be applied to the class which presents `MobilityViewController`. The `delegate` property of the `MobilitySDK` instance should be set to this class. Then implement the method `-(void)closeMobilityApp`, and dismiss `MobilityViewController` in the implementation. For example:
 
 ```objectivec
 @interface ViewController: UIViewController<MobilityDelegate>
@@ -45,6 +49,11 @@ Please note that you may need to install `git-lfs`. On Mac, install this with `b
 @end
 
 @implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [MobilitySDKManager sharedManager].delegate = self;
+}
 
 - (void)closeMobilityApp {
     [self dismissViewControllerAnimated:NO completion:nil];
@@ -54,6 +63,7 @@ Please note that you may need to install `git-lfs`. On Mac, install this with `b
     MobilityViewController *vc = [[MobilitySDKManager sharedManager] getMobilitySdkView:nil];
     [self presentViewController:(ViewController *)vc animated:YES completion:nil];
 };
+@end
 ```
 
 ## Mobility Events
