@@ -33,15 +33,18 @@ Please note that you may need to install `git-lfs`. On Mac, install this with `b
 ```objectivec
 #import <MobilitySDK/MobilitySDK.h>
 
-// inside class implementation:
-
--(void)buttonPress:(id)sender {
-    MobilityViewController * vc = [[MobilitySDKManager sharedManager] getMobilitySdkView:nil];
-    [self presentViewController:(ViewController *)vc animated:YES completion:nil];
-}
+// when you want to open mobility ViewController:
+MobilityViewController * vc = [[MobilitySDKManager sharedManager] getMobilitySdkView:nil];
+[self presentViewController:(ViewController *)vc animated:YES completion:nil];
 ```
 
-5. To enable the opening and closing of Mobility App, the delegate protocol `MobilityDelegate` should be applied to the class which presents `MobilityViewController`. The `delegate` property of the `MobilitySDK` instance should be set to this class. Then implement the method `-(void)closeMobilityApp`, and dismiss `MobilityViewController` in the implementation. For example:
+5. To enable the opening and closing of Mobility App, the delegate protocol `MobilityDelegate` should be applied to the class which presents `MobilityViewController`.
+
+Mandatory delegate methods:
+
+- `-(void)closeMobilityApp` - Implement this method to enable the `MobilityViewController` to close itself.
+
+* `-(void)openMobilityApp` - Implement this method to enable the `MobilityViewController` to open itself (eg on click of a deep linking push notification). This is used extremely sparingly by the MobilitySdk, and only on user interaction.
 
 ```objectivec
 @interface ViewController: UIViewController<MobilityDelegate>
