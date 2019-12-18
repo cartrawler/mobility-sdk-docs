@@ -28,9 +28,11 @@ Please note that you may need to install `git-lfs`. On Mac, install this with `b
 }
 ```
 
-4. To display the Mobility App view, send the `getMobilitySdkVeiw:initialProperties` message to the instance of MobilitySdkManager.
+4. To display the Mobility App view, send the `getMobilitySdkVeiw:initialProperties` message to the instance of `MobilitySdkManager` in a `ViewController`.
 
 ```objectivec
+#import <MobilitySDK/MobilitySDK.h>
+
     MobilityViewController * vc = [[MobilitySDKManager sharedManager] getMobilitySdkView:nil];
     [self presentViewController:(ViewController *)vc animated:YES completion:nil];
 ```
