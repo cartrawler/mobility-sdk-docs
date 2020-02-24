@@ -9,3 +9,7 @@ Please find below the integration docs for both Android and IOS.
 ## IOS Integration
 
 [Documentation](./IOS.md)
+
+## iOS Integration
+
+[Documentation](<./React\ Native\ iOS.md>)
