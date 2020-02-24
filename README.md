@@ -12,4 +12,4 @@ Please find below the integration docs for both Android and IOS.
 
 ## React Native iOS Integration
 
-[Documentation](<./React\ Native\ iOS.md>)
+[Documentation](./ReactNativeiOS.md)
