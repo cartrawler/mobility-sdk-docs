@@ -10,6 +10,10 @@ Please find below the integration docs for both Android and IOS.
 
 [Documentation](./IOS.md)
 
+## React Native Android Integration
+
+[Documentation](./ReactNativeAndroid.md)
+
 ## React Native iOS Integration
 
 [Documentation](./ReactNativeiOS.md)
