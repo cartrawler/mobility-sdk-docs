@@ -12,7 +12,7 @@ The Mobility SDK has been implemented as an Android aar library.
 
 ```groovy
 include ':react-native-mobility-sdk'
-project(':react-native-mobility-sdk').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-mobility-sdk/android')
+project(':react-native-mobility-sdk').projectDir = new File(rootProject.projectDir, '../node_modules/@cartrawler/react-native-mobility-sdk/android')
 ```
 
 - Auto linking:
