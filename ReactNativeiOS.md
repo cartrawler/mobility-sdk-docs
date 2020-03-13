@@ -2,7 +2,7 @@
 
 The `MobilitySDK` has been implemented as an iOS dynamic Framework that is installed using CocoaPods and `npm` or `yarn`.
 
-1. 1. Authenticate Github Packages by creating a `.npmrc` in the project directory and adding the following lines:
+1. Authenticate Github Packages by creating a `.npmrc` in the project directory and adding the following lines:
 
 ```
 @cartrawler:registry=https://npm.pkg.github.com/
@@ -13,7 +13,7 @@ The `access-token` will be provided by our team. It should also be stored as an 
 
 2. Add the `react-native-mobility-sdk` node_module with yarn add `@cartrawler/react-native-mobility-sdk`.
 
-3.  Add the following lines to your `Podfile` and run `pod install` or `pod update`:
+3. Add the following lines to your `Podfile` and run `pod install` or `pod update`:
 
 ```
 pod 'MobilitySDK', :git => 'https://github.com/cartrawler/mobility-sdk-pods'
