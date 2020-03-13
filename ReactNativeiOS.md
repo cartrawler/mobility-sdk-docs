@@ -18,7 +18,7 @@ The `access-token` will be provided by our team. It should also be stored as an 
 ```
 pod 'MobilitySDK', :git => 'https://github.com/cartrawler/mobility-sdk-pods'
 
-pod 'RNMobilitySdk', :path => '../node_modules/react-native-mobility-sdk/ios/RNMobilitySdk.podspec'
+pod 'RNMobilitySdk', :path => '../node_modules/@cartrawler/react-native-mobility-sdk/ios/RNMobilitySdk.podspec'
 ```
 
 **NB: This may take a few minutes**
