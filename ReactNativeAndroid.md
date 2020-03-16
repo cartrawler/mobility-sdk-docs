@@ -64,7 +64,7 @@ android {
 
 ```groovy
 dependencies {
-    implementation('com.cartrawler:mobility-app:+@aar') {
+    implementation('com.cartrawler:mobility-app:rn0.0.14@aar') {
         transitive = true
         // if app is using androidx include the following line.
         exclude group: 'androidx.core', module: '*'
