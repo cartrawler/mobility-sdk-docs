@@ -1,0 +1,67 @@
+## iOS Rich Push
+
+Depending on whether your iOS app has implemented Rich Push or not, there will be different steps to enable Rich Push for the `MobilitySDK`. For both approaches, we have made an iOS dymanic framework available in the same pod repo as `MobilitySDK`.
+
+Here is the relevant Apple documentation on `Push Extensions` [for reference](https://developer.apple.com/documentation/usernotifications/modifying_content_in_newly_delivered_notifications).
+
+Before these notifications can work, please contact our team to exchange the relevant backend requirements.
+
+### For App With Standard aPNS Integration and no Rich Push Integration
+
+#### 1. Add a Service App Extension to Your Project
+
+To add this extension to your app:
+
+- Select File > New > Target in Xcode.
+
+- Select the Notification Service Extension target from the iOS > Application section.
+
+- Click Next.
+
+- Specify a name and other configuration details for your app extension. In these docs, this target will be referred to as `richpushtarget`.
+
+- Click Finish.
+
+In the `General` tab in the `richpushtarget`, change the `deployment target` to match that of your app config.
+
+#### 2. Add `mobilitypush` pod to new extension target
+
+- In the project's `Podfile`, add a new target which imports the `mobilitypush` pod:
+
+```ruby
+target 'richpushtarget' do
+    use_frameworks!
+    pod 'mobilitypush', :git => 'https://github.com/cartrawler/mobility-sdk-pods'
+end
+```
+
+#### 3. Implement the code which enables Rich Push
+
+In the new file generated in `richpushtarget`, which we will refer to as `NotificationService.swift`, add the following code:
+
+```swift
+import UserNotifications
+import mobilitypush
+
+final class NotificationService: MobilityNotificationService {
+
+}
+```
+
+This code declares a class which extends `MobilityNotificationService`, which in turn extends `UNNotificationServiceExtension`. When a push notification is sent to the device with a certain property (`mutable-content`) set to true, iOS will check if the application has a `Notification Extension` bundled with it. If so, it will call that function before the Push is displayed.
+
+#### 4. Pass the Push Token
+
+When the token is retrieved using the `didRegisterForRemoteNotificationsWithDeviceToken` method, pass the token to `MobilitySDK` by the `setPushToken:token` method.
+
+##### Objective-C:
+
+```objectivec
+[[MobilitySDKManager sharedManager] setPushToken:token];
+```
+
+##### Swift:
+
+```swift
+MobilitySDKManager.sharedManager()?.setPushToken(token);
+```
