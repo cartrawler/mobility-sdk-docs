@@ -1,4 +1,6 @@
-## Android Integration
+# Android Integration
+
+## Basic Mobility Integration
 
 The Mobility SDK has been implemented as an Android aar library.
 
@@ -60,5 +62,5 @@ import com.cartrawler.mobilitysdk.MobilitySDKManager;
 MobilitySDKManager.init(this, "<partner-id>");
 
 // To render the Mobility App view (for example on a button press). `this` should be an Android Activity.
-MobilitySDKManager.showActivity(this);
+MobilitySDKManager.showMobility(this, DeeplinkType.STANDARD,"source", "campaign", "medium");
 ```
