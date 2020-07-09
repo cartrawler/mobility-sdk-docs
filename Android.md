@@ -27,8 +27,8 @@ allprojects {
 android {
     compileSdkVersion 28
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 26
+        minSdkVersion 24
+        targetSdkVersion 28
     }
 }
 ```
@@ -62,5 +62,5 @@ import com.cartrawler.mobilitysdk.MobilitySDKManager;
 MobilitySDKManager.init(this, "<partner-id>");
 
 // To render the Mobility App view (for example on a button press). `this` should be an Android Activity.
-MobilitySDKManager.showMobility(this, DeeplinkType.STANDARD,"source", "campaign", "medium");
+MobilitySDKManager.showMobility(this, DeeplinkType.STANDARD, "source", "campaign", "medium");
 ```
