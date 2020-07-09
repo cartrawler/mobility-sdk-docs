@@ -28,7 +28,7 @@ Please note that you may need to install `git-lfs`. On Mac, install this with `b
 }
 ```
 
-4. To display the Mobility App view, send the `getMobilitySdkVeiw:initialProperties` message to the instance of `MobilitySdkManager` in a `ViewController`.
+4. To display the Mobility App view, send the `openMobility` message to the instance of `MobilitySdkManager` in a `ViewController`.
 
 ```objectivec
 #import <MobilitySDK/MobilitySDK.h>
@@ -43,9 +43,9 @@ These paramaters will be used for tracking purposes, any string will do for test
 
 Mandatory delegate methods:
 
-- `-(void)closeMobilityApp` - Implement this method to enable the `MobilityViewController` to close itself.
+- `-(void)shouldCloseMobilityApp` - Implement this method to enable the `MobilityViewController` to close itself.
 
-* `-(void)openMobilityApp` - Implement this method to enable the `MobilityViewController` to open itself (eg on click of a deep linking push notification). This is used extremely sparingly by the MobilitySdk, and only on user interaction.
+* `-(void)shouldOpenMobilityApp` - Implement this method to enable the `MobilityViewController` to open itself (eg on click of a deep linking push notification). This is used extremely sparingly by the MobilitySdk, and only on user interaction.
 
 ```objectivec
 @interface ViewController: UIViewController<MobilityDelegate>
@@ -64,8 +64,7 @@ Mandatory delegate methods:
 };
 
 - (void)shouldOpenMobilityApp {
-    MobilityViewController *vc = [[MobilitySDKManager sharedManager] getMobilitySdkView:nil];
-    [self presentViewController:(ViewController *)vc animated:YES completion:nil];
+    [[MobilitySDKManager sharedManager] openMobility:self type:@"cross-sell" source:@"deeplink source" campaign:@"deeplink campaign" medium:@"deeplink medium"];
 };
 @end
 ```
