@@ -33,10 +33,11 @@ Please note that you may need to install `git-lfs`. On Mac, install this with `b
 ```objectivec
 #import <MobilitySDK/MobilitySDK.h>
 
-// when you want to open mobility ViewController:
-MobilityViewController * vc = [[MobilitySDKManager sharedManager] getMobilitySdkView:nil];
-[self presentViewController:(ViewController *)vc animated:YES completion:nil];
+// when you want to open mobility ViewController (where self is a ViewController):
+[[MobilitySDKManager sharedManager] openMobility:self type:@"cross-sell" source:@"deeplink source" campaign:@"deeplink campaign" medium:@"deeplink medium"];
 ```
+
+These paramaters will be used for tracking purposes, any string will do for testing.
 
 5. To enable the opening and closing of Mobility App, the delegate protocol `MobilityDelegate` should be applied to the class which presents `MobilityViewController`.
 
@@ -58,11 +59,11 @@ Mandatory delegate methods:
     [MobilitySDKManager sharedManager].delegate = self;
 }
 
-- (void)closeMobilityApp {
+- (void)shouldCloseMobilityApp {
     [self dismissViewControllerAnimated:NO completion:nil];
 };
 
-- (void)openMobilityApp {
+- (void)shouldOpenMobilityApp {
     MobilityViewController *vc = [[MobilitySDKManager sharedManager] getMobilitySdkView:nil];
     [self presentViewController:(ViewController *)vc animated:YES completion:nil];
 };
