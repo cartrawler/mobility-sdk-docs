@@ -48,8 +48,12 @@ dependencies {
 4. Add an Activity tag to the app's `AndroidManifest.xml`:
 
 ```xml
+<!--we only support portrait mode-->
+
 <manifest ...>
-    <activity android:name="com.cartrawler.mobilitysdk.MobilitySDKActivity"/>
+    <activity
+            android:name="com.cartrawler.mobilitysdk.MobilitySDKActivity"
+            android:screenOrientation="portrait" />
 </manifest>
 ```
 
