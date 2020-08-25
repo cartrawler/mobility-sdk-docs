@@ -25,10 +25,10 @@ allprojects {
 
 ```java
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
-        minSdkVersion 24
-        targetSdkVersion 28
+        minSdkVersion 21
+        targetSdkVersion 29
     }
 }
 ```
