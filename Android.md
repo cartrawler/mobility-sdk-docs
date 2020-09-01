@@ -96,7 +96,11 @@ public enum DeeplinkType {
 
 ## Deeplinking
 
-Passing user data to the SDK needs to be implemented after calling `MobilitySDKManager.init` and before running `MobilitySDKManager.showMobility`.
+#
+
+### Passing User Data
+
+User data being passed to the SDK needs to be implemented after calling `MobilitySDKManager.init` and before running `MobilitySDKManager.showMobility`.
 
 Each value of `setUserData` is a string but if a value is not needed then `null` can be passed in. The function to call is as follows:
 

@@ -88,7 +88,11 @@ The signature for `openMobility` is as follows:
 
 ## Deeplinking
 
-Passing user data to the SDK needs to be implemented after calling `initWithOptions` and before running `openMobility`.
+#
+
+### Passing User Data
+
+User data being passed to the SDK needs to be implemented after calling `initWithOptions` and before running `openMobility`.
 
 Each value of `setUserData` is a string but if a value is not needed then `nil` can be passed in. The function to call is as follows:
 
