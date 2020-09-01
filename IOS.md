@@ -70,15 +70,28 @@ Mandatory delegate methods:
 ```
 
 The signature for `openMobility` is as follows:
+
 ```objectivec
 - (void)openMobility:(UIViewController *)vc type:(NSString *)type source:(NSString *)source campaign:(NSString *)campaign medium:(NSString *)medium;
 ```
 
 - The type field currently supports two values, "cross-sell" and "standard".
 
-- The `source` is a required field which will describe the context in which the `MobilitySdk` is opened. 
-In an app integration **this value will always be \<partnerName\>-app.**
+- The `source` is a required field which will describe the context in which the `MobilitySdk` is opened.
+  In an app integration **this value will always be \<partnerName\>-app.**
 
 - The `campaign` field denotes the marketing campaign the touchpoint is associated with. For example "48hrs" for a timed push notification, or "homepage-banner" for a mobility campaign on the homepage.
 
 - The `medium` field describes the marketing channel the user came from. Examples include `inapp-link` and `push` for push notifications.
+
+#
+
+## Deeplinking
+
+Passing user data to the SDK needs to be implemented after calling `initWithOptions` and before running `openMobility`.
+
+Each value of `setUserData` is a string but if a value is not needed then `nil` can be passed in. The function to call is as follows:
+
+```objectivec
+[[MobilitySDKManager sharedManager] setUserData:@"<first-name>" lastName:@"<last-name>" email:@"<email>" mobileNumber: @"<mobile-number>"];
+```
