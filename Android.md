@@ -70,12 +70,14 @@ MobilitySDKManager.showMobility(this, DeeplinkType.STANDARD, <source>, <campaign
 ```
 
 - The signature of the `showMobility` method is as follows:
+
 ```java
 showMobility(Activity activity, DeeplinkType type, String source, String
             campaign, String medium)
 ```
 
 - The DeeplinkType enum currently has two supported values:
+
 ```java
 public enum DeeplinkType {
     CROSS_SELL("cross-sell"),
@@ -83,9 +85,21 @@ public enum DeeplinkType {
 }
 ```
 
-- The `source` is a required field which will describe the context in which the `MobilitySdk` is opened. 
-In an app integration **this value will always be \<partnerName\>-app.**
+- The `source` is a required field which will describe the context in which the `MobilitySdk` is opened.
+  In an app integration **this value will always be \<partnerName\>-app.**
 
 - The `campaign` field denotes the marketing campaign the touchpoint is associated with. For example "48hrs" for a timed push notification, or "homepage-banner" for a mobility campaign on the homepage.
 
 - The `medium` field describes the marketing channel the user came from. Examples include `inapp-link` and `push` for push notifications.
+
+#
+
+## Deeplinking
+
+Passing user data to the SDK needs to be implemented after `MobilitySDKManager.init` and before `MobilitySDKManager.showMobility`.
+
+Each value of `setUserData` is a string but if a value is not needed then `null` can be passed in. The function to call is as follows:
+
+```
+ MobilitySDKManager.setUserData(<first-name>, <last-name>, <email>, <mobile-number>);
+```
