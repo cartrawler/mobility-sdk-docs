@@ -110,7 +110,7 @@ Each value of `setUserData` is a string but if a value is not needed then `null`
 
 ### Manually Removing User Data
 
-The user data is automatically cleared once a user has registered successfully. To remove the data manually, this method can be called:
+To remove the user data manually (if a user logs out of their account on your app for instance), call `resetUserData`:
 
 ```java
 MobilitySDKManager.resetUserData();
