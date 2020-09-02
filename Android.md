@@ -107,3 +107,11 @@ Each value of `setUserData` is a string but if a value is not needed then `null`
 ```java
  MobilitySDKManager.setUserData("<first-name>", "<last-name>", "<email>", "<mobile-number>");
 ```
+
+### Manually Removing User Data
+
+The user data is automatically cleared once a user has registered successfully. To remove the data manually, this method can be called:
+
+```java
+MobilitySDKManager.resetUserData();
+```

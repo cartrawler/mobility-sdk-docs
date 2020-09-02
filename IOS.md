@@ -99,3 +99,11 @@ Each value of `setUserData` is a string but if a value is not needed then `nil` 
 ```objectivec
 [[MobilitySDKManager sharedManager] setUserData:@"<first-name>" lastName:@"<last-name>" email:@"<email>" mobileNumber: @"<mobile-number>"];
 ```
+
+### Manually Removing User Data
+
+The user data is automatically cleared once a user has registered successfully. To remove the data manually, this method can be called:
+
+```objectivec
+[[MobilitySDKManager sharedManager] resetUserData];
+```
