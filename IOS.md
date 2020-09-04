@@ -70,15 +70,67 @@ Mandatory delegate methods:
 ```
 
 The signature for `openMobility` is as follows:
+
 ```objectivec
 - (void)openMobility:(UIViewController *)vc type:(NSString *)type source:(NSString *)source campaign:(NSString *)campaign medium:(NSString *)medium;
 ```
 
 - The type field currently supports two values, "cross-sell" and "standard".
 
-- The `source` is a required field which will describe the context in which the `MobilitySdk` is opened. 
-In an app integration **this value will always be \<partnerName\>-app.**
+- The `source` is a required field which will describe the context in which the `MobilitySdk` is opened.
+  In an app integration **this value will always be \<partnerName\>-app.**
 
 - The `campaign` field denotes the marketing campaign the touchpoint is associated with. For example "48hrs" for a timed push notification, or "homepage-banner" for a mobility campaign on the homepage.
 
 - The `medium` field describes the marketing channel the user came from. Examples include `inapp-link` and `push` for push notifications.
+
+#
+
+## Deeplinking
+
+Passing deeplink data into the `MobilitySdk` would allow a user to navigate into the app to a particular screen.
+
+### `standard`
+
+The deeplink type `standard` is used for a regular opening of the SDK. This is implemented by running `openMobility` as usual:
+
+```objectivec
+[[MobilitySDKManager sharedManager] openMobility:<view-controller> type:@"<deeplink-type>" source:@"<source>" campaign:@"<campaign>" medium:@"<medium>"];
+```
+
+The first parameter `<view-controller>` is the view controller in which the SDK will be displayed. The rest of the paramaters are strings.
+
+### Example:
+
+```objectivec
+[[MobilitySDKManager sharedManager] openMobility:self type:@"cross-sell" source:@"<partnerName>-app" campaign:@"48hrs" medium:@"push"];
+```
+
+### `cross-sell`
+
+The deeplink type `cross-sell` is used for opening a specific screen in the SDK. To enable this functionality, you will need to pass in flight data using the following method:
+
+```objectivec
+//  Add this call after `initWithOptions` and before `openMobility`
+[[MobilitySDKManager sharedManager] addFlight:@"<origin-IATA>" destinationIATA:@"<destination-IATA>" flightNumber:@"<flight-number>" flightDate:@"<flight-date-time>"];
+```
+
+All of the paramaters are strings. The `<flight-date-time>` is in the format YYYY-MM-DDThh:mm:ss.s.
+
+### Example:
+
+```objectivec
+[[MobilitySDKManager sharedManager] initWithOptions:nil partnerId:@"<partner-id>"];
+
+...
+
+[[MobilitySDKManager sharedManager] addFlight:@"LGW" destinationIATA:@"DUB" flightNumber:@"FR121" flightDate:@"2020-09-11T22:08:50.001"];
+...
+
+// The type must be set here to cross-sell for the deeplink to be actioned
+ [[MobilitySDKManager sharedManager] openMobility:self type:@"cross-sell" source:@"<partnerName>-app" campaign:@"48hrs" medium:@"push"];
+```
+
+#
+
+## Additional Methods
