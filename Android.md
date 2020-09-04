@@ -123,3 +123,90 @@ A locale can be sent into the `MobilitySDK` as a string ("en-GB" for instance) a
 ```java
 MobilitySDKManager.setLocale("<locale>");
 ```
+
+List of Supported locales:
+
+<table>
+<tr>
+    <th>Code</th>
+    <th>Languages</th>
+</tr>
+<tr>
+    <td>bg-BG</td>
+    <td>Bulgarian</td>
+</tr>
+<tr>
+    <td>en-GB</td>
+    <td>English</td>
+</tr>
+<tr>
+    <td>en-US</td>
+    <td>American English</td>
+</tr>
+<tr>
+    <td>de-DE</td>
+    <td>German</td>
+</tr>
+<tr>
+    <td>es-ES</td>
+    <td>Spanish</td>
+</tr>
+<tr>
+    <td>fr-FR</td>
+    <td>French</td>
+</tr>
+<tr>
+    <td>it-IT</td>
+    <td>Italian</td>
+</tr>
+<tr>
+    <td>lt-LT</td>
+    <td>Lithuanian</td>
+</tr>
+
+<tr>
+    <td>hu-HU</td>
+    <td>Hungarian</td>
+</tr>
+<tr>
+    <td>nl-NL</td>
+    <td>Dutch</td>
+</tr>
+<tr>
+    <td>nb-NO</td>
+    <td>Norwegian</td>
+</tr>
+<tr>
+    <td>pt-PT</td>
+    <td>Portuguese</td>
+</tr>
+</tr>
+<tr>
+    <td>pt-BR</td>
+    <td>Brazilian Portuguese</td>
+</tr>
+</tr>
+<tr>
+    <td>pl-PL</td>
+    <td>Polish</td>
+</tr>
+</tr>
+<tr>
+    <td>ro-RO</td>
+    <td>Romanian</td>
+</tr>
+</tr>
+<tr>
+    <td>sv-SE</td>
+    <td>Swedish</td>
+</tr>
+</tr>
+<tr>
+    <td>uk-UA</td>
+    <td>Ukrainian</td>
+</tr>
+<tr>
+    <td>ru-RU</td>
+    <td>Russian</td>
+</tr>
+</table>
