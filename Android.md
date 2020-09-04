@@ -109,12 +109,12 @@ showMobility(<activity>, <deeplink-type>, <source>, <campaign>, <medium>)
 ### Example:
 
 ```java
-MobilitySDKManager.showMobility(this, DeeplinkType.STANDARD, "partner", "standard","inapp-link");
+MobilitySDKManager.showMobility(this, DeeplinkType.STANDARD, "partner", "standard","menu");
 ```
 
 ### `DeeplinkType.CROSS_SELL`
 
-To enable this functionality, you will need to pass in flight data using the following method:
+The deeplink type `CROSS_SELL` is used for opening a specific screen in the SDK. To enable this functionality, you will need to pass in flight data using the following method:
 
 ```java
 //  Add this call after `MobilitySDKManager.init` and before `MobilitySDKManager.showMobility`
@@ -135,7 +135,7 @@ MobilitySDKManager.addFlight("TUF", "DUB", "FR2993", "2020-10-19T12:35:00.000");
 ...
 
 // DeeplinkType of CROSS_SELL must be set here for the deeplink to be actioned
-MobilitySDKManager.showMobility(this, DeeplinkType.CROSS_SELL, <source>, <campaign>, <medium>);
+MobilitySDKManager.showMobility(this, DeeplinkType.CROSS_SELL, "partner", "standard","menu");
 ```
 
 #
