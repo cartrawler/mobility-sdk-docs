@@ -96,8 +96,6 @@ public enum DeeplinkType {
 
 ## Deeplinking
 
-#
-
 <b>Deeplink data being passed into the `MobilitySDK` needs to be implemented after calling `MobilitySDKManager.init` and before running `MobilitySDKManager.showMobility`.</b>
 
 ### Passing User Data
