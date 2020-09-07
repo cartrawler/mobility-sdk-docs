@@ -88,7 +88,7 @@ The signature for `openMobility` is as follows:
 
 ## Additional Methods
 
-<b>Deeplink data being passed into the `MobilitySDK` needs to be implemented after calling `initWithOptions` and before running `openMobility`.</b>
+<b>Additional Methods being called from the `MobilitySDK` needs to be implemented after calling `initWithOptions` and before running `openMobility`.</b>
 
 ### Passing User Data
 

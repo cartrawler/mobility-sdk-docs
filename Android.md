@@ -96,7 +96,7 @@ public enum DeeplinkType {
 
 ## Additional Methods
 
-<b>Deeplink data being passed into the `MobilitySDK` needs to be implemented after calling `MobilitySDKManager.init` and before running `MobilitySDKManager.showMobility`.</b>
+<b>Additional Methods being called from the `MobilitySDK` needs to be implemented after calling `MobilitySDKManager.init` and before running `MobilitySDKManager.showMobility`.</b>
 
 ### Passing User Data
 
