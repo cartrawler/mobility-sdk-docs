@@ -86,9 +86,7 @@ The signature for `openMobility` is as follows:
 
 #
 
-## Deeplinking
-
-#
+## Additional Methods
 
 ### Passing User Data
 

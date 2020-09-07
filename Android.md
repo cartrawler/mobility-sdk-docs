@@ -94,9 +94,7 @@ public enum DeeplinkType {
 
 #
 
-## Deeplinking
-
-#
+## Additional Methods
 
 ### Passing User Data
 
