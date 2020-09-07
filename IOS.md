@@ -88,7 +88,9 @@ The signature for `openMobility` is as follows:
 
 ## Additional Methods
 
-<b>Additional Methods being called from the `MobilitySDK` needs to be implemented after calling `initWithOptions` and before running `openMobility`.</b>
+<b>The MobilitySDK exposes additional methods to override any default behaviour.
+
+Note: Ensure to call an additional method, outlined below, after initialising the SDK with `initWithOptions` and before running `openMobility`</b>
 
 ### Passing User Data
 
