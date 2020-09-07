@@ -108,7 +108,7 @@ The first parameter `<view-controller>` is the view controller in which the SDK 
 
 ### `cross-sell`
 
-The deeplink type `cross-sell` is used for opening a specific screen in the SDK. To enable this functionality, you will need to pass in flight data using the following method:
+The deeplink type `cross-sell` is used for shortening a users search by pre-populating trip data from the flight details provided. To enable this functionality, you will need to pass in flight data using the following method:
 
 ```objectivec
 //  Add this call after `initWithOptions` and before `openMobility`

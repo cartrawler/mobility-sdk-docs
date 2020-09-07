@@ -114,7 +114,7 @@ MobilitySDKManager.showMobility(this, DeeplinkType.STANDARD, "partner", "standar
 
 ### `DeeplinkType.CROSS_SELL`
 
-The deeplink type `CROSS_SELL` is used for opening a specific screen in the SDK. To enable this functionality, you will need to pass in flight data using the following method:
+The deeplink type `cross-sell` is used for shortening a users search by pre-populating trip data from the flight details provided. To enable this functionality, you will need to pass in flight data using the following method:
 
 ```java
 //  Add this call after `MobilitySDKManager.init` and before `MobilitySDKManager.showMobility`
