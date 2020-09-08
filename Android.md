@@ -96,9 +96,11 @@ public enum DeeplinkType {
 
 ## Additional Methods
 
-### Passing User Data
+<b>The MobilitySDK exposes additional methods to override any default behaviour.
 
-User data being passed to the SDK needs to be implemented after calling `MobilitySDKManager.init` and before running `MobilitySDKManager.showMobility`.
+Note: Ensure to call an additional method, outlined below, after initialising the SDK with `initWithOptions` and before running `openMobility`</b>
+
+### Passing User Data
 
 Each value of `setUserData` is a string but if a value is not needed then `null` can be passed in. The function to call is as follows:
 
