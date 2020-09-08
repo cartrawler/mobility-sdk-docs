@@ -142,9 +142,9 @@ MobilitySDKManager.showMobility(this, DeeplinkType.CROSS_SELL, "partner", "stand
 
 ## Additional Methods
 
-<b>The MobilitySDK exposes additional methods to override any default behaviour.
+The MobilitySDK exposes additional methods to override any default behaviour.
 
-Note: Ensure to call an additional method, outlined below, after initialising the SDK with `initWithOptions` and before running `openMobility`</b>
+<b>Note:</b> Ensure to call an additional method after initialising the SDK with `init` and before running `showMobility`.
 
 ### Passing User Data
 
