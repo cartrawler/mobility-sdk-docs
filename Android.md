@@ -170,7 +170,7 @@ A locale can be sent into the `MobilitySDK` as a string ("en-GB" for instance) a
 MobilitySDKManager.setLocale("<locale>");
 ```
 
-List of Supported locales:
+List of supported locales:
 
 <table>
 <tr>
