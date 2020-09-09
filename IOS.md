@@ -86,11 +86,58 @@ The signature for `openMobility` is as follows:
 
 #
 
+## Deeplinking
+
+Passing deeplink data into the `MobilitySdk` would allow a user to navigate into the app to a particular screen.
+
+### `standard`
+
+The deeplink type `standard` is used for a regular opening of the SDK. This is implemented by running `openMobility` as usual:
+
+```objectivec
+[[MobilitySDKManager sharedManager] openMobility:<view-controller> type:@"<deeplink-type>" source:@"<source>" campaign:@"<campaign>" medium:@"<medium>"];
+```
+
+The first parameter `<view-controller>` is the view controller in which the SDK will be displayed. The rest of the paramaters are strings.
+
+### Example:
+
+```objectivec
+[[MobilitySDKManager sharedManager] openMobility:self type:@"cross-sell" source:@"<partnerName>-app" campaign:@"48hrs" medium:@"push"];
+```
+
+### `cross-sell`
+
+The deeplink type `cross-sell` is used for shortening a users search by pre-populating trip data from the flight details provided. To enable this functionality, you will need to pass in flight data using the following method:
+
+```objectivec
+//  Add this call after `initWithOptions` and before `openMobility`
+[[MobilitySDKManager sharedManager] addFlight:@"<origin-IATA>" destinationIATA:@"<destination-IATA>" flightNumber:@"<flight-number>" flightDate:@"<flight-date-time>"];
+```
+
+All of the paramaters are strings. The `<flight-date-time>` is in the format YYYY-MM-DDThh:mm:ss.s.
+
+### Example:
+
+```objectivec
+[[MobilitySDKManager sharedManager] initWithOptions:nil partnerId:@"<partner-id>"];
+
+...
+
+[[MobilitySDKManager sharedManager] addFlight:@"LGW" destinationIATA:@"DUB" flightNumber:@"FR121" flightDate:@"2020-09-11T22:08:50.001"];
+...
+
+// The type must be set here to cross-sell for the deeplink to be actioned
+ [[MobilitySDKManager sharedManager] openMobility:self type:@"cross-sell" source:@"<partnerName>-app" campaign:@"48hrs" medium:@"push"];
+```
+
+#
+
 ## Additional Methods
 
 The MobilitySDK exposes additional methods to override any default behaviour.
 
-<b>Note:</b> Ensure to call an additional method, outlined below, after initialising the SDK with `initWithOptions` and before running `openMobility`
+<b>Note:</b> Ensure to call an additional method after initialising the SDK with `initWithOptions` and before running `openMobility`.
 
 ### Passing User Data
 
@@ -116,7 +163,7 @@ A locale can be sent into the `MobilitySDK` as a string ("en-GB" for instance) a
 [[MobilitySDKManager sharedManager] setLocale:@"<locale>"];
 ```
 
-List of Supported locales:
+List of supported locales:
 
 <table>
 <tr>

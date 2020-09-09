@@ -62,7 +62,7 @@ dependencies {
 ```java
 import com.cartrawler.mobilitysdk.MobilitySDKManager;
 
-// in the init method of your app, like the onCreate of the root activity. `this` should be an Android Activity.
+// in the init method of your app, like the onCreate of the root activity. `this` should be an Android Activity. `init` should only be called once.
 MobilitySDKManager.init(this, "<partner-id>");
 
 // To render the Mobility App view (for example on a button press). `this` should be an Android Activity.
@@ -94,11 +94,57 @@ public enum DeeplinkType {
 
 #
 
+## Deeplinking
+
+Passing deeplink data into the `MobilitySdk` would allow a user to navigate into the app to a particular screen.
+
+### `DeeplinkType.STANDARD`
+
+The deeplink type `STANDARD` is used for a regular opening of the SDK. This is implemented by running `MobilitySDKManager.showMobility` as usual:
+
+```java
+showMobility(<activity>, <deeplink-type>, <source>, <campaign>, <medium>)
+```
+
+### Example:
+
+```java
+MobilitySDKManager.showMobility(this, DeeplinkType.STANDARD, "partner", "standard","menu");
+```
+
+### `DeeplinkType.CROSS_SELL`
+
+The deeplink type `cross-sell` is used for shortening a users search by pre-populating trip data from the flight details provided. To enable this functionality, you will need to pass in flight data using the following method:
+
+```java
+//  Add this call after `MobilitySDKManager.init` and before `MobilitySDKManager.showMobility`
+MobilitySDKManager.addFlight("<origin-IATA>", "<destination-IATA>", "<flight-number>", "<flight-date-time>");
+```
+
+All of the paramaters are strings. The `<flight-date-time>` is in the format YYYY-MM-DDThh:mm:ss.s.
+
+### Example:
+
+```java
+MobilitySDKManager.init(this, "<partner-id>");
+
+...
+
+MobilitySDKManager.addFlight("TUF", "DUB", "FR2993", "2020-10-19T12:35:00.000");
+
+...
+
+// DeeplinkType of CROSS_SELL must be set here for the deeplink to be actioned
+MobilitySDKManager.showMobility(this, DeeplinkType.CROSS_SELL, "partner", "standard","menu");
+```
+
+#
+
 ## Additional Methods
 
 The MobilitySDK exposes additional methods to override any default behaviour.
 
-<b>Note:</b> Ensure to call an additional method, outlined below, after initialising the SDK with `initWithOptions` and before running `openMobility`
+<b>Note:</b> Ensure to call an additional method after initialising the SDK with `init` and before running `showMobility`.
 
 ### Passing User Data
 
@@ -124,7 +170,7 @@ A locale can be sent into the `MobilitySDK` as a string ("en-GB" for instance) a
 MobilitySDKManager.setLocale("<locale>");
 ```
 
-List of Supported locales:
+List of supported locales:
 
 <table>
 <tr>
