@@ -37,7 +37,7 @@ Please note that you may need to install `git-lfs`. On Mac, install this with `b
 [[MobilitySDKManager sharedManager] openMobility:self type:@"cross-sell" source:@"deeplink source" campaign:@"deeplink campaign" medium:@"deeplink medium"];
 ```
 
-These paramaters will be used for tracking purposes, any string will do for testing.
+These parameters will be used for tracking purposes, any string will do for testing.
 
 5. To enable the opening and closing of Mobility App, the delegate protocol `MobilityDelegate` should be applied to the class which presents `MobilityViewController`.
 
@@ -98,7 +98,7 @@ The deeplink type `standard` is used for a regular opening of the SDK. This is i
 [[MobilitySDKManager sharedManager] openMobility:<view-controller> type:@"<deeplink-type>" source:@"<source>" campaign:@"<campaign>" medium:@"<medium>"];
 ```
 
-The first parameter `<view-controller>` is the view controller in which the SDK will be displayed. The rest of the paramaters are strings.
+The first parameter `<view-controller>` is the view controller in which the SDK will be displayed. The rest of the parameters are strings.
 
 ### Example:
 
@@ -112,10 +112,10 @@ The deeplink type `cross-sell` is used for shortening a users search by pre-popu
 
 ```objectivec
 //  Add this call after `initWithOptions` and before `openMobility`
-[[MobilitySDKManager sharedManager] addFlight:@"<origin-IATA>" destinationIATA:@"<destination-IATA>" flightNumber:@"<flight-number>" flightDate:@"<flight-date-time>"];
+[[MobilitySDKManager sharedManager] addFlight:@"<origin-IATA>" destinationIATA:@"<destination-IATA>" flightNumber:@"<flight-number>" flightDepartureDate:@"<flight-departure-date-time>" flightArrivalDate:@"<flight-arrival-date-time>" originAirportName:@"<origin-airport-name>" destinationAirportName:@"<destination-airport-name>"];
 ```
 
-All of the paramaters are strings. The `<flight-date-time>` is in the format YYYY-MM-DDThh:mm:ss.s.
+All of the parameters are strings. The `<flight-departure-date-time>` and `<flight-arrival-date-time>` are in the format YYYY-MM-DDThh:mm:ss.s.
 
 ### Example:
 
@@ -128,7 +128,7 @@ All of the paramaters are strings. The `<flight-date-time>` is in the format YYY
 ...
 
 // The type must be set here to cross-sell for the deeplink to be actioned
- [[MobilitySDKManager sharedManager] openMobility:self type:@"cross-sell" source:@"<partnerName>-app" campaign:@"48hrs" medium:@"push"];
+[[MobilitySDKManager sharedManager] addFlight:@"LIS" destinationIATA:@"DUB" flightNumber:@"TP1324" flightDepartureDate:@"2021-03-18T12:20:00.001" flightArrivalDate:@"2021-03-18T15:10:00.001" originAirportName:@"Lisbon Airport" destinationAirportName:@"Dublin, Terminal 1"]
 ```
 
 #
