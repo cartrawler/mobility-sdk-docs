@@ -118,10 +118,10 @@ The deeplink type `cross-sell` is used for shortening a users search by pre-popu
 
 ```java
 //  Add this call after `MobilitySDKManager.init` and before `MobilitySDKManager.showMobility`
-MobilitySDKManager.addFlight("<origin-IATA>", "<destination-IATA>", "<flight-number>", "<flight-date-time>");
+MobilitySDKManager.addFlight("<origin-IATA>", "<destination-IATA>", "<flight-number>", "<flight-departure-date-time>", "<flight-arrival-date-time>", "<origin-airport-name>", "<destination-airport-name>");
 ```
 
-All of the paramaters are strings. The `<flight-date-time>` is in the format YYYY-MM-DDThh:mm:ss.s.
+All of the parameters are strings. The `<flight-departure-date-time>` and `<flight-arrival-date-time>` are in the format YYYY-MM-DDThh:mm:ss.s.
 
 ### Example:
 
@@ -130,7 +130,7 @@ MobilitySDKManager.init(this, "<partner-id>");
 
 ...
 
-MobilitySDKManager.addFlight("TUF", "DUB", "FR2993", "2020-10-19T12:35:00.000");
+MobilitySDKManager.addFlight("LIS", "DUB", "TP1324", "2021-03-18T12:20:00.001", "2021-03-18T15:10:00.001", "Lisbon Airport, Terminal 2", "Dublin Airport, Terminal 1");
 
 ...
 
