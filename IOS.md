@@ -249,3 +249,29 @@ List of supported locales:
     <td>Russian</td>
 </tr>
 </table>
+
+### Passing the flight booking reference
+
+A (flight) booking reference can be sent into the `MobilitySDK` as a string ("bookRef123" for instance) as follows:
+
+```java
+[[MobilitySDKManager sharedManager] setBookingReference:@"<bookingReference>"];
+```
+
+### Passing the trip type
+
+A (flight) trip type can be sent into the `MobilitySDK` as a `TripTypeEnum` as follows:
+
+```java
+[[MobilitySDKManager sharedManager] setTripType:LEISURE];
+```
+
+- The `TripTypeEnum` enum currently has two supported values: `LEISURE` and `BUSINESS`.
+
+### Passing the number of passenegers
+
+The number of passengers (for the flight) can be sent to the `MobilitySDK` as 3 numbers (`adults`, `children` and `infants`) as follows:
+
+```java
+[[MobilitySDKManager sharedManager] setPassengers:<adults> children:<children> infants:<infants>];
+```
