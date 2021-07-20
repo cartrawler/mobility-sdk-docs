@@ -268,10 +268,11 @@ A (flight) trip type can be sent into the `MobilitySDK` as a `TripTypeEnum` as f
 
 - The `TripTypeEnum` enum currently has two supported values: `LEISURE` and `BUSINESS`.
 
-### Passing the number of passenegers
+### Passing the number of passengers
 
-The number of passengers (for the flight) can be sent to the `MobilitySDK` as 3 numbers (`adults`, `children` and `infants`) as follows:
+The number of passengers (for the flight) can be sent to the `MobilitySDK` as 3 numbers (`adults`, `children` and `infants`, use `0` if there is no passenger in this category) as follows:
 
 ```java
 [[MobilitySDKManager sharedManager] setPassengers:<adults> children:<children> infants:<infants>];
+[[MobilitySDKManager sharedManager] setPassengers:2 children:1 infants:0];
 ```
