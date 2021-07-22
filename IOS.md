@@ -112,10 +112,18 @@ The deeplink type `cross-sell` is used for shortening a users search by pre-popu
 
 ```objectivec
 //  Add this call after `initWithOptions` and before `openMobility`
-[[MobilitySDKManager sharedManager] addFlight:@"<origin-IATA>" destinationIATA:@"<destination-IATA>" flightNumber:@"<flight-number>" flightDate:@"<flight-date-time>"];
+[[MobilitySDKManager sharedManager] addFlight:@"<origin-IATA>" destinationIATA:@"<destination-IATA>" flightNumber:@"<flight-number>" flightDepartureDate:@"<flight-departure-date>" flightArrivalDate:@"<flight-arrival-date>" originAirportName:@"<origin-airport-name>" destinationAirportName:@"<destination-airport-name>" direction:@"<direction>"];
 ```
 
-All of the paramaters are strings. The `<flight-date-time>` is in the format YYYY-MM-DDThh:mm:ss.s.
+All of the parameters are strings except for `<direction>`.
+
+`<direction>` is an **enum** with the values of either `DROPOFF_TO_ORIGIN` or `PICKUP_FROM_DESTINATION`.
+
+`DROPOFF_TO_ORIGIN` is used when the user needs a ride to the airport they are flying out of, using the flight details provided.
+
+`PICKUP_FROM_DESTINATION` is used when the user needs a ride from the airport they are landing at, using the flight details provided.
+
+`<flight-departure-date-time>` and `<flight-arrival-date-time>` are both in the format YYYY-MM-DDThh:mm:ss.s.
 
 ### Example:
 
@@ -124,7 +132,12 @@ All of the paramaters are strings. The `<flight-date-time>` is in the format YYY
 
 ...
 
-[[MobilitySDKManager sharedManager] addFlight:@"LGW" destinationIATA:@"DUB" flightNumber:@"FR121" flightDate:@"2020-09-11T22:08:50.001"];
+[[MobilitySDKManager sharedManager] addFlight:@"DUB" destinationIATA:@"BCN" flightNumber:@"FR6875" flightDepartureDate:@"2021-12-31T06:15" flightArrivalDate:@"2021-12-31T09:40" originAirportName:@"Dublin" destinationAirportName:@"Barca Airport" direction:PICKUP_FROM_DESTINATION];
+
+// OR
+
+[[MobilitySDKManager sharedManager] addFlight:@"DUB" destinationIATA:@"BCN" flightNumber:@"FR6875" flightDepartureDate:@"2021-12-31T06:15" flightArrivalDate:@"2021-12-31T09:40" originAirportName:@"Dublin" destinationAirportName:@"Barca Airport" direction:DROPOFF_TO_ORIGIN];
+
 ...
 
 // The type must be set here to cross-sell for the deeplink to be actioned

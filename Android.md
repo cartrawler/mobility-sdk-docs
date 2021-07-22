@@ -118,10 +118,18 @@ The deeplink type `cross-sell` is used for shortening a users search by pre-popu
 
 ```java
 //  Add this call after `MobilitySDKManager.init` and before `MobilitySDKManager.showMobility`
-MobilitySDKManager.addFlight("<origin-IATA>", "<destination-IATA>", "<flight-number>", "<flight-date-time>");
+MobilitySDKManager.addFlight("<origin-IATA>", "<destination-IATA>", "<flight-number>", "<flight-departure-date-time>", "<flight-arrival-date-time>", "<origin-airport-name>", "<destination-airport-name>","<direction>");
 ```
 
-All of the paramaters are strings. The `<flight-date-time>` is in the format YYYY-MM-DDThh:mm:ss.s.
+All of the parameters are strings except for `<direction>`.
+
+`<direction>` is an **enum** with the values of either `DeeplinkDirection.DROPOFF_TO_ORIGIN` or `DeeplinkDirection.PICKUP_FROM_DESTINATION`.
+
+`DeeplinkDirection.DROPOFF_TO_ORIGIN` is used when the user needs a ride to the airport they are flying out of, using the flight details provided.
+
+`DeeplinkDirection.PICKUP_FROM_DESTINATION` is used when the user needs a ride from the airport they are landing at, using the flight details provided.
+
+`<flight-departure-date-time>` and `<flight-arrival-date-time>` are both in the format YYYY-MM-DDThh:mm:ss.s.
 
 ### Example:
 
@@ -130,8 +138,11 @@ MobilitySDKManager.init(this, "<partner-id>");
 
 ...
 
-MobilitySDKManager.addFlight("TUF", "DUB", "FR2993", "2020-10-19T12:35:00.000");
+MobilitySDKManager.addFlight("DUB", "BCN", "FR6875", "2021-12-31T06:15:00.001", "2021-12-31T09:40:00.001", "Dublin Airport (Terminal 1)", "Barcelona Airport", DeeplinkDirection.DROPOFF_TO_ORIGIN);
 
+// OR
+
+MobilitySDKManager.addFlight("DUB", "BCN", "FR6875", "2021-12-31T06:15:00.001", "2021-12-31T09:40:00.001", "Dublin Airport (Terminal 1)", "Barcelona Airport", DeeplinkDirection.PICKUP_FROM_DESTINATION);
 ...
 
 // DeeplinkType of CROSS_SELL must be set here for the deeplink to be actioned
