@@ -117,7 +117,11 @@ The deeplink type `cross-sell` is used for shortening a users search by pre-popu
 
 All of the parameters are strings except for `<direction>`.
 
-`<direction>` is an **enum** with the values of either `DROPOFF_TO_ORIGIN` or `PICKUP_FROM_DESTINATION`. `DROPOFF_TO_ORIGIN` is used when the user is to be dropped off at the airport they are flying out of from the flight details provided. `PICKUP_FROM_DESTINATION` is used when the user is to be picked up at the airport they are landing at from the flight details provided.
+`<direction>` is an **enum** with the values of either `DROPOFF_TO_ORIGIN` or `PICKUP_FROM_DESTINATION`.
+
+`DROPOFF_TO_ORIGIN` is used when the user needs a ride to the airport they are flying out of, using the flight details provided.
+
+`PICKUP_FROM_DESTINATION` is used when the user needs a ride from the airport they are landing at, using the flight details provided.
 
 `<flight-departure-date-time>` and `<flight-arrival-date-time>` are both in the format YYYY-MM-DDThh:mm:ss.s.
 
